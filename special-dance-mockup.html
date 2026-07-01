@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Dance — Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;font-weight:400;color:#1a1a1a;background:#fff;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+img{display:block;}
+
+/* ── tokens ── */
+:root{
+  --naranja:#e9430f;
+  --naranja2:#ee7c42;
+  --negro:#111111;
+  --negro2:#1c1c1c;
+  --gris-claro:#f5f5f5;
+  --texto:#333;
+  --texto-suave:#666;
+}
+
+/* ── badge mockup ── */
+.badge-mockup{
+  position:fixed;top:14px;right:14px;z-index:9999;
+  background:var(--negro);color:#fff;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:7px 14px;border-radius:20px;opacity:.8;
+}
+
+/* ══ HEADER ══ */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 5%;
+  transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
+}
+header.solid{
+  background:#fff;
+  padding:14px 5%;
+  box-shadow:0 2px 20px rgba(0,0,0,.08);
+}
+.header-logo img{height:50px;width:auto;transition:filter .35s ease;}
+header.solid .header-logo img{filter:none;}
+
+nav ul{display:flex;gap:32px;list-style:none;}
+nav a{
+  font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:#fff;position:relative;transition:color .3s;
+}
+nav a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--naranja);transition:width .3s;}
+nav a:hover::after,nav a.active::after{width:100%;}
+nav a.active,nav a:hover{color:var(--naranja);}
+header.solid nav a{color:var(--negro);}
+header.solid nav a.active,header.solid nav a:hover{color:var(--naranja);}
+
+.btn-nav{
+  background:var(--naranja);color:#fff;
+  font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:12px 22px;border-radius:4px;
+  transition:background .3s, transform .2s;
+}
+.btn-nav:hover{background:var(--naranja2);transform:translateY(-1px);}
+
+/* ══ HERO ══ */
+.hero{
+  position:relative;height:100vh;min-height:660px;
+  display:flex;align-items:center;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.45);}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.65) 0%,rgba(0,0,0,.15) 70%,transparent 100%);
+}
+/* acento curva naranja */
+.hero-curve{
+  position:absolute;right:0;bottom:0;z-index:1;
+  width:260px;height:260px;
+  border:1.5px solid rgba(233,67,15,.35);
+  border-radius:50%;
+  transform:translate(40%,40%);
+  pointer-events:none;
+}
+.hero-curve::before{
+  content:'';position:absolute;inset:-30px;
+  border:1px solid rgba(233,67,15,.18);
+  border-radius:50%;
+}
+
+/* social sidebar */
+.hero-social{
+  position:absolute;right:28px;top:50%;transform:translateY(-50%);
+  z-index:10;display:flex;flex-direction:column;gap:18px;
+}
+.hero-social a{
+  width:36px;height:36px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.35);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:14px;transition:border-color .3s, background .3s;
+}
+.hero-social a:hover{border-color:var(--naranja);background:var(--naranja);}
+.hero-social svg{width:15px;height:15px;fill:currentColor;}
+
+.hero-content{
+  position:relative;z-index:5;
+  padding:0 5%;max-width:700px;
+  margin-top:80px;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:12px;
+  font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--naranja);
+  margin-bottom:22px;
+}
+.hero-eyebrow::before{content:'';width:28px;height:2px;background:var(--naranja);}
+.hero-content h1{
+  font-size:clamp(36px,5.5vw,62px);
+  font-weight:700;color:#fff;line-height:1.12;
+  margin-bottom:22px;
+}
+.hero-content h1 em{
+  font-family:'Dancing Script',cursive;
+  font-style:normal;color:var(--naranja);font-size:1.12em;
+}
+.hero-line{width:50px;height:3px;background:var(--naranja);margin-bottom:24px;}
+.hero-content p{
+  font-size:15px;color:rgba(255,255,255,.78);line-height:1.75;
+  max-width:440px;margin-bottom:36px;
+}
+.hero-btns{display:flex;gap:18px;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--naranja);color:#fff;
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:15px 28px;border-radius:4px;display:flex;align-items:center;gap:10px;
+  transition:background .3s, transform .2s;
+}
+.btn-primary:hover{background:var(--naranja2);transform:translateY(-2px);}
+.btn-outline{
+  border:1.5px solid rgba(255,255,255,.55);color:#fff;
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:15px 28px;border-radius:4px;display:flex;align-items:center;gap:10px;
+  transition:border-color .3s, background .3s;
+}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.07);}
+
+.hero-scroll{
+  position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+  z-index:5;display:flex;flex-direction:column;align-items:center;gap:10px;
+  color:rgba(255,255,255,.55);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+}
+.scroll-icon{
+  width:26px;height:40px;border:1.5px solid rgba(255,255,255,.4);border-radius:14px;
+  display:flex;justify-content:center;padding-top:6px;
+}
+.scroll-dot{width:4px;height:8px;background:#fff;border-radius:2px;animation:scrollDot 2s ease-in-out infinite;}
+@keyframes scrollDot{0%,100%{transform:translateY(0);opacity:.5;}50%{transform:translateY(8px);opacity:1;}}
+
+/* ══ SERVICIOS ══ */
+.servicios-intro{
+  padding:90px 5%;background:#fff;text-align:center;
+}
+.sec-eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--naranja);margin-bottom:14px;display:block;
+}
+.servicios-intro h2{
+  font-size:clamp(26px,3.5vw,38px);font-weight:700;color:var(--negro);
+  max-width:680px;margin:0 auto 16px;
+}
+.divider-orange{
+  display:flex;align-items:center;justify-content:center;gap:8px;margin:0 auto 60px;
+}
+.divider-orange::before,.divider-orange::after{content:'';width:40px;height:1px;background:var(--naranja);}
+.divider-orange span{width:8px;height:8px;border:2px solid var(--naranja);border-radius:50%;}
+
+.servicios-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border:1px solid #ebebeb;border-radius:6px;overflow:hidden;
+}
+.servicio-card{
+  padding:42px 28px;border-right:1px solid #ebebeb;
+  transition:background .3s, transform .2s;
+  position:relative;cursor:pointer;
+}
+.servicio-card:last-child{border-right:none;}
+.servicio-card::before{
+  content:'';position:absolute;top:0;left:0;width:0;height:3px;background:var(--naranja);
+  transition:width .4s ease;
+}
+.servicio-card:hover::before{width:100%;}
+.servicio-card:hover{background:#fff8f5;}
+.serv-icon{
+  width:52px;height:52px;margin-bottom:22px;
+  display:flex;align-items:center;justify-content:center;
+}
+.serv-icon svg{width:40px;height:40px;stroke:var(--naranja);fill:none;stroke-width:1.5;}
+.servicio-card h3{
+  font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--negro);margin-bottom:12px;
+}
+.servicio-card p{font-size:13px;color:var(--texto-suave);line-height:1.7;margin-bottom:20px;}
+.mas-info{
+  font-size:12px;font-weight:600;color:var(--naranja);
+  display:flex;align-items:center;gap:6px;
+  transition:gap .3s;
+}
+.mas-info:hover{gap:10px;}
+.mas-info span{font-size:16px;line-height:1;}
+
+/* ══ POR QUÉ ELEGIRNOS ══ */
+.porque{
+  background:var(--negro2);padding:90px 5%;
+  display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;
+}
+.porque-img{
+  position:relative;height:480px;overflow:hidden;border-radius:4px;
+}
+.porque-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.8);}
+.porque-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(0,0,0,.4),transparent);
+}
+.img-border-deco{
+  position:absolute;bottom:-16px;right:-16px;width:calc(100% - 30px);height:calc(100% - 30px);
+  border:2px solid var(--naranja);border-radius:4px;z-index:0;pointer-events:none;
+}
+.porque-text .sec-eyebrow{text-align:left;}
+.porque-text h2{
+  font-size:clamp(28px,3.2vw,40px);font-weight:700;color:#fff;
+  line-height:1.2;margin-bottom:36px;
+}
+.porque-list{display:flex;flex-direction:column;gap:28px;}
+.porque-item{display:flex;gap:18px;align-items:flex-start;}
+.porque-icon{
+  width:44px;height:44px;border-radius:6px;background:rgba(233,67,15,.15);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.porque-icon svg{width:22px;height:22px;stroke:var(--naranja);fill:none;stroke-width:1.8;}
+.porque-item-text strong{font-size:14px;font-weight:700;color:#fff;display:block;margin-bottom:4px;}
+.porque-item-text p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;}
+
+/* ══ GALERÍA ══ */
+.galeria{padding:90px 5%;background:#fff;}
+.galeria-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:36px;}
+.galeria-head div{}
+.galeria-head h2{font-size:clamp(24px,3vw,34px);font-weight:700;color:var(--negro);}
+.galeria-arrows{display:flex;gap:10px;margin-top:4px;}
+.arrow-btn{
+  width:42px;height:42px;border-radius:50%;border:1.5px solid #ddd;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .3s;color:#999;
+}
+.arrow-btn:hover,.arrow-btn.active-arrow{background:var(--naranja);border-color:var(--naranja);color:#fff;}
+.arrow-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;}
+
+.galeria-track{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:28px;
+}
+.gal-item{
+  position:relative;height:210px;overflow:hidden;border-radius:4px;cursor:pointer;
+}
+.gal-item img,.gal-item .gal-ph{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.3,1);}
+.gal-item:hover img,.gal-item:hover .gal-ph{transform:scale(1.08);}
+.gal-ph{
+  background:linear-gradient(135deg,#1a1a1a 0%,#2e2e2e 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.gal-ph-label{color:rgba(255,255,255,.35);font-size:11px;letter-spacing:.06em;text-align:center;padding:12px;}
+.gal-overlay{
+  position:absolute;inset:0;background:rgba(233,67,15,.0);
+  transition:background .4s;display:flex;align-items:flex-end;
+}
+.gal-item:hover .gal-overlay{background:rgba(233,67,15,.35);}
+
+.galeria-cta{display:flex;justify-content:center;gap:12px;}
+.btn-ver-fotos{
+  border:1.5px solid var(--negro);color:var(--negro);
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:14px 32px;border-radius:4px;display:flex;align-items:center;gap:10px;
+  transition:all .3s;
+}
+.btn-ver-fotos:hover{background:var(--negro);color:#fff;}
+
+/* ══ PROCESO ══ */
+.proceso{padding:90px 5%;background:var(--gris-claro);}
+.proceso .sec-eyebrow{text-align:center;display:block;}
+.proceso h2{
+  font-size:clamp(22px,2.8vw,30px);font-weight:700;color:var(--negro);
+  text-align:center;margin-bottom:14px;
+}
+.proceso-sub{text-align:center;color:var(--texto-suave);font-size:14px;margin-bottom:56px;}
+
+.proceso-steps{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+  position:relative;
+}
+.proceso-steps::before{
+  content:'';position:absolute;top:36px;left:10%;right:10%;height:1px;
+  background:repeating-linear-gradient(90deg,var(--naranja) 0,var(--naranja) 6px,transparent 6px,transparent 14px);
+  z-index:0;
+}
+.paso{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:0 10px;position:relative;z-index:1;
+}
+.paso-circle{
+  width:72px;height:72px;border-radius:50%;
+  background:#fff;border:2px solid var(--naranja);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  margin-bottom:20px;transition:background .3s;
+}
+.paso:hover .paso-circle{background:var(--naranja);}
+.paso:hover .paso-circle svg{stroke:#fff;}
+.paso:hover .paso-num{color:#fff;}
+.paso-num{font-size:10px;font-weight:700;color:var(--naranja);margin-bottom:2px;}
+.paso-circle svg{width:22px;height:22px;stroke:var(--naranja);fill:none;stroke-width:1.8;transition:stroke .3s;}
+.paso h4{font-size:13px;font-weight:700;color:var(--negro);margin-bottom:8px;}
+.paso p{font-size:12px;color:var(--texto-suave);line-height:1.6;}
+
+/* ══ CTA FINAL ══ */
+.cta-section{
+  position:relative;padding:100px 5%;overflow:hidden;
+  background:var(--negro2);
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.cta-bg{position:absolute;inset:0;z-index:0;}
+.cta-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.2) saturate(.5);}
+.cta-content{position:relative;z-index:2;}
+.cta-content h2{
+  font-size:clamp(28px,3.5vw,44px);font-weight:700;color:#fff;line-height:1.25;
+  margin-bottom:0;
+}
+.cta-content h2 em{
+  font-family:'Dancing Script',cursive;font-style:normal;color:var(--naranja);font-size:1.1em;
+}
+.cta-right{position:relative;z-index:2;}
+.cta-right p{font-size:15px;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:28px;}
+
+/* ══ FOOTER ══ */
+footer{background:var(--negro);padding:64px 5% 28px;}
+.foot-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;
+  gap:40px;margin-bottom:50px;
+}
+.foot-logo{margin-bottom:16px;}
+.foot-logo img{height:48px;width:auto;}
+.foot-tagline{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:22px;max-width:240px;}
+.foot-social{display:flex;gap:12px;}
+.foot-social a{
+  width:34px;height:34px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);
+  transition:all .3s;
+}
+.foot-social a:hover{border-color:var(--naranja);color:var(--naranja);}
+.foot-social svg{width:14px;height:14px;fill:currentColor;}
+
+.foot-col h4{
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;margin-bottom:20px;
+}
+.foot-col a,.foot-col p{
+  display:block;font-size:13px;color:rgba(255,255,255,.45);
+  margin-bottom:11px;line-height:1.5;transition:color .3s;
+}
+.foot-col a:hover{color:var(--naranja);}
+.foot-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;}
+.foot-contact-item svg{width:15px;height:15px;flex-shrink:0;stroke:var(--naranja);fill:none;stroke-width:1.8;margin-top:2px;}
+.foot-contact-item span{font-size:13px;color:rgba(255,255,255,.45);}
+
+.foot-bottom{
+  border-top:1px solid rgba(255,255,255,.08);padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:rgba(255,255,255,.3);
+}
+
+/* ══ REVEAL ══ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s ease, transform .7s ease;}
+.reveal-left.in-view{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .7s ease, transform .7s ease;}
+.reveal-right.in-view{opacity:1;transform:translateX(0);}
+
+@media(max-width:900px){
+  nav,.btn-nav{display:none;}
+  .servicios-grid{grid-template-columns:1fr 1fr;}
+  .porque{grid-template-columns:1fr;}
+  .porque-img{height:300px;}
+  .galeria-track{grid-template-columns:repeat(2,1fr);}
+  .proceso-steps{grid-template-columns:1fr 1fr;gap:30px;}
+  .proceso-steps::before{display:none;}
+  .cta-section{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="badge-mockup">Mockup — Special Dance</div>
+
+<!-- ═══ HEADER ═══ -->
+<header id="header">
+  <a href="#" class="header-logo">
+    <img src="img/logo-color.png" alt="Special Dance" id="header-logo-img">
+  </a>
+  <nav>
+    <ul>
+      <li><a href="#" class="active">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+  <a href="#contacto" class="btn-nav">Agenda tu clase</a>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="img/hero.jpeg" alt="Primer baile de bodas Special Dance">
+  </div>
+  <div class="hero-curve"></div>
+
+  <!-- social sidebar -->
+  <div class="hero-social">
+    <a href="#" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="#" aria-label="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="#" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    </a>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Baila tu historia</div>
+    <h1>Momentos únicos<br>que siempre <em>recordarás</em></h1>
+    <div class="hero-line"></div>
+    <p>Clases de baile personalizadas para bodas, 15 años, graduaciones y cualquier ocasión especial.</p>
+    <div class="hero-btns">
+      <a href="#servicios" class="btn-primary">Nuestros servicios <span>→</span></a>
+      <a href="#galeria" class="btn-outline">Ver galería <span>▷</span></a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-icon"><div class="scroll-dot"></div></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ═══ SERVICIOS ═══ -->
+<section id="servicios" class="servicios-intro">
+  <span class="sec-eyebrow">Bailes para cada ocasión</span>
+  <h2>El baile perfecto para cada momento especial</h2>
+  <div class="divider-orange"><span></span></div>
+
+  <div class="servicios-grid reveal">
+    <!-- Bodas -->
+    <div class="servicio-card">
+      <div class="serv-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M16 8h-8m8 8h-8"/></svg>
+      </div>
+      <h3>Bodas</h3>
+      <p>Un primer baile inolvidable que contará su historia de amor.</p>
+      <a href="#" class="mas-info">Más información <span>→</span></a>
+    </div>
+    <!-- 15 años -->
+    <div class="servicio-card">
+      <div class="serv-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <h3>15 años</h3>
+      <p>Haz de tu noche mágica un recuerdo que brille para siempre.</p>
+      <a href="#" class="mas-info">Más información <span>→</span></a>
+    </div>
+    <!-- Graduaciones -->
+    <div class="servicio-card">
+      <div class="serv-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <h3>Graduaciones</h3>
+      <p>Celebra tu logro con un baile lleno de energía y estilo.</p>
+      <a href="#" class="mas-info">Más información <span>→</span></a>
+    </div>
+    <!-- Otros -->
+    <div class="servicio-card">
+      <div class="serv-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+      </div>
+      <h3>Otros eventos</h3>
+      <p>Aniversarios, eventos corporativos y más. Tú eliges la ocasión, nosotros la coreografía.</p>
+      <a href="#" class="mas-info">Más información <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ POR QUÉ ELEGIRNOS ═══ -->
+<section id="nosotros" class="porque">
+  <div class="porque-img reveal-left">
+    <img src="img/gallery1.jpeg" alt="Pareja bailando con efecto de humo">
+    <div class="img-border-deco"></div>
+  </div>
+  <div class="porque-text reveal-right">
+    <span class="sec-eyebrow">¿Por qué elegirnos?</span>
+    <h2>Pasión, experiencia<br>y resultados que se sienten</h2>
+    <div class="porque-list">
+      <div class="porque-item">
+        <div class="porque-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10zm0-14l-4 4h3v4h2v-4h3l-4-4z"/></svg>
+        </div>
+        <div class="porque-item-text">
+          <strong>Clases 100% personalizadas</strong>
+          <p>Adaptamos cada paso a tu estilo, nivel y tipo de evento.</p>
+        </div>
+      </div>
+      <div class="porque-item">
+        <div class="porque-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="porque-item-text">
+          <strong>Instructores profesionales</strong>
+          <p>Bailarines expertos con trayectoria y pasión por enseñar.</p>
+        </div>
+      </div>
+      <div class="porque-item">
+        <div class="porque-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+        </div>
+        <div class="porque-item-text">
+          <strong>Coreografías únicas</strong>
+          <p>Creamos rutinas originales que cuentan tu historia.</p>
+        </div>
+      </div>
+      <div class="porque-item">
+        <div class="porque-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="porque-item-text">
+          <strong>Ambiente cómodo y motivador</strong>
+          <p>Disfruta el proceso mientras te preparamos para brillar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALERÍA ═══ -->
+<section id="galeria" class="galeria">
+  <div class="galeria-head">
+    <div>
+      <span class="sec-eyebrow" style="text-align:left;">Galería</span>
+      <h2>Cada baile, un recuerdo para siempre</h2>
+    </div>
+    <div class="galeria-arrows">
+      <button class="arrow-btn" aria-label="anterior">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="arrow-btn active-arrow" aria-label="siguiente">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="galeria-track reveal">
+    <div class="gal-item">
+      <img src="img/gallery1.jpeg" alt="Boda con humo">
+      <div class="gal-overlay"></div>
+    </div>
+    <div class="gal-item">
+      <img src="img/gallery2.jpeg" alt="Boda con humo">
+      <div class="gal-overlay"></div>
+    </div>
+    <div class="gal-item">
+      <div class="gal-ph" style="background:linear-gradient(135deg,#2a1a10,#4a2010);">
+        <img src="img/gallery3.jpeg" alt="Boda con humo">
+      </div>
+      <div class="gal-overlay"></div>
+    </div>
+    <div class="gal-item">
+      <img src="img/hero.jpeg" alt="Primer baile">
+      <div class="gal-overlay"></div>
+    </div>
+    <div class="gal-item">
+      <div class="gal-ph" style="background:linear-gradient(135deg,#1a2030,#0a1020);">
+        <img src="img/gallery4.jpeg" alt="Boda con humo">
+      </div>
+      <div class="gal-overlay"></div>
+    </div>
+  </div>
+
+  <div class="galeria-cta">
+    <a href="#" class="btn-ver-fotos">Ver más fotos ⊞</a>
+  </div>
+</section>
+
+<!-- ═══ PROCESO ═══ -->
+<section class="proceso">
+  <span class="sec-eyebrow">Así es nuestro proceso</span>
+  <h2>De la primera clase al día especial</h2>
+  <p class="proceso-sub">Cinco pasos simples para que llegues a tu evento con confianza y lista/listo para brillar.</p>
+
+  <div class="proceso-steps reveal">
+    <div class="paso">
+      <div class="paso-circle">
+        <span class="paso-num">01</span>
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h4>Contáctanos</h4>
+      <p>Cuéntanos sobre tu evento y lo que tienes en mente.</p>
+    </div>
+    <div class="paso">
+      <div class="paso-circle">
+        <span class="paso-num">02</span>
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <h4>Agendamos</h4>
+      <p>Coordinamos tu horario para la primera clase.</p>
+    </div>
+    <div class="paso">
+      <div class="paso-circle">
+        <span class="paso-num">03</span>
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h4>Creamos tu baile</h4>
+      <p>Diseñamos una coreografía hecha para ti.</p>
+    </div>
+    <div class="paso">
+      <div class="paso-circle">
+        <span class="paso-num">04</span>
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v6l4 2"/><path d="M3.34 17a10 10 0 1 1 17.32 0"/></svg>
+      </div>
+      <h4>Practicamos</h4>
+      <p>Te guiamos paso a paso hasta que te sientas seguro/a.</p>
+    </div>
+    <div class="paso">
+      <div class="paso-circle">
+        <span class="paso-num">05</span>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <h4>¡Brillas!</h4>
+      <p>Disfruta tu momento y sorprende a todos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FINAL ═══ -->
+<section id="contacto" class="cta-section">
+  <div class="cta-bg"><img src="img/hero.jpeg" alt="fondo"></div>
+  <div class="cta-content reveal-left">
+    <h2>¿Listo para vivir tu<br><em>momento especial?</em></h2>
+  </div>
+  <div class="cta-right reveal-right">
+    <p>Agenda tu primera clase y descubre todo lo que podemos crear juntos. Cada historia merece un baile único.</p>
+    <a href="#" class="btn-primary" style="display:inline-flex;">Agenda tu clase &nbsp;→</a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer id="footer">
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo"><img src="img/logo-color.png" alt="Special Dance"></div>
+      <p class="foot-tagline">Transformamos momentos en recuerdos inolvidables a través del baile.</p>
+      <div class="foot-social">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="foot-col">
+      <h4>Navegación</h4>
+      <a href="#">Inicio</a>
+      <a href="#">Nosotros</a>
+      <a href="#">Servicios</a>
+      <a href="#">Galería</a>
+      <a href="#">Testimonios</a>
+      <a href="#">Contacto</a>
+    </div>
+
+    <div class="foot-col">
+      <h4>Servicios</h4>
+      <a href="#">Bodas</a>
+      <a href="#">15 Años</a>
+      <a href="#">Graduaciones</a>
+      <a href="#">Otros eventos</a>
+    </div>
+
+    <div class="foot-col">
+      <h4>Contacto</h4>
+      <div class="foot-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>+502 1234 5678</span>
+      </div>
+      <div class="foot-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>info@specialdance.com</span>
+      </div>
+      <div class="foot-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Ciudad de Guatemala</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot-bottom">
+    <span>© 2025 Special Dance. Todos los derechos reservados.</span>
+    <span style="color:rgba(255,255,255,.2);">Mockup de referencia</span>
+  </div>
+</footer>
+
+<script>
+  /* header on scroll */
+  const header = document.getElementById('header');
+  const logoImg = document.getElementById('header-logo-img');
+  window.addEventListener('scroll', () => {
+    const solid = window.scrollY > 60;
+    header.classList.toggle('solid', solid);
+    /* swap logo: color on dark, color still on white (PNG has alpha so it works) */
+    logoImg.src = solid ? 'img/logo-negro.png' : 'img/logo-color.png';
+  });
+
+  /* intersection reveal */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => io.observe(el));
+
+  /* stagger servicio cards */
+  document.querySelectorAll('.servicio-card').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.08) + 's';
+    el.classList.add('reveal');
+    io.observe(el);
+  });
+  document.querySelectorAll('.paso').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.1) + 's';
+    el.classList.add('reveal');
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
